@@ -20,3 +20,11 @@ dinner-roulette/
 ├── Dockerfile          # Container configuration
 ├── docker-compose.yml  # Orchestration
 └── pyproject.toml      # Modern Python dependencies
+```
+
+## 📝 Next Step
+1. Change the background image of the entire webpage
+2. Add background music and make it auto play when the page loads (not sure if this is viable)
+3. Add images of each food to the slices
+4. Add a popup animation when the winner is selected
+5. Deploy it on my new domain
