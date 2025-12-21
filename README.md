@@ -22,6 +22,17 @@ dinner-roulette/
 └── pyproject.toml      # Modern Python dependencies
 ```
 
+## 🎨 How It Works
+Use the following commands to run the application:
+```
+uv run uvicorn app.main:app --reload
+```
+
+Use the following commands to build and run the Docker container:
+```
+docker-compose up --build
+```
+
 ## 📝 Next Step
 1. Change the background image of the entire webpage
 2. Add background music and make it auto play when the page loads (not sure if this is viable)

@@ -24,60 +24,21 @@ body {
     position: absolute;
     top: -20px;
     left: 50%;
-    transform: translateX(-36%);
+    transform: translateX(-50%);
     width: 0; 
     height: 0; 
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
     border-top: 40px solid #0bb813;
     z-index: 10;
+    pointer-events: none;
 }
 
-/* The Wheel */
-.wheel {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 5px solid #333;
-    position: relative;
-    transition: transform 4s cubic-bezier(0.15, 0, 0.15, 1); /* Smooth "physics" stop */
-    /* We create 8 slices using conic-gradient */
-    background: conic-gradient(
-        #ff7675 0deg 45deg, 
-        #74b9ff 45deg 90deg, 
-        #55efc4 90deg 135deg, 
-        #ffeaa7 135deg 180deg,
-        #a29bfe 180deg 225deg,
-        #fab1a0 225deg 270deg,
-        #00cec9 270deg 315deg,
-        #fd79a8 315deg 360deg
-    );
+/* Counter-shake animation - keeps pointer static while wrapper shakes */
+.wheel-wrapper.shake .pointer {
+    animation: counterShake 0.6s ease-in-out;
 }
 
-/* Style for labels inside the wheel */
-.wheel span {
-    position: absolute;
-    /* This makes the span a 'spoke' reaching from the center to the edge */
-    width: 50%; 
-    height: 40px; /* Adjust height based on font size */
-    
-    /* Origin is exactly the center of the wheel */
-    top: calc(50% - 20px); /* 50% minus half the height of the span */
-    left: 50%;
-    transform-origin: left center;
-    
-    display: flex;
-    justify-content: flex-end; /* Pushes text to the outer edge */
-    align-items: center;
-    
-    padding-right: 20px; /* Space between text and wheel border */
-    box-sizing: border-box;
-    
-    font-weight: bold;
-    font-size: 1rem;
-    color: #333;
-    white-space: nowrap; /* Prevents Chinese characters from wrapping */
-}
 
 button {
     padding: 15px 30px;
@@ -88,6 +49,38 @@ button {
     border: none;
     border-radius: 5px;
     transition: 0.3s;
+}
+
+/* Shake animation */
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg) translateX(0); }
+    10% { transform: rotate(2deg) translateX(5px); }
+    20% { transform: rotate(-2deg) translateX(-5px); }
+    30% { transform: rotate(2deg) translateX(5px); }
+    40% { transform: rotate(-2deg) translateX(-5px); }
+    50% { transform: rotate(2deg) translateX(5px); }
+    60% { transform: rotate(-2deg) translateX(-5px); }
+    70% { transform: rotate(1deg) translateX(3px); }
+    80% { transform: rotate(-1deg) translateX(-3px); }
+    90% { transform: rotate(0.5deg) translateX(2px); }
+}
+
+/* Counter-shake animation - inverse of shake to keep pointer static */
+@keyframes counterShake {
+    0%, 100% { transform: translateX(-50%) rotate(0deg) translateX(0); }
+    10% { transform: translateX(-50%) rotate(-2deg) translateX(-5px); }
+    20% { transform: translateX(-50%) rotate(2deg) translateX(5px); }
+    30% { transform: translateX(-50%) rotate(-2deg) translateX(-5px); }
+    40% { transform: translateX(-50%) rotate(2deg) translateX(5px); }
+    50% { transform: translateX(-50%) rotate(-2deg) translateX(-5px); }
+    60% { transform: translateX(-50%) rotate(2deg) translateX(5px); }
+    70% { transform: translateX(-50%) rotate(-1deg) translateX(-3px); }
+    80% { transform: translateX(-50%) rotate(1deg) translateX(3px); }
+    90% { transform: translateX(-50%) rotate(-0.5deg) translateX(-2px); }
+}
+
+.wheel-wrapper.shake {
+    animation: shake 0.6s ease-in-out;
 }
 
 button:hover {

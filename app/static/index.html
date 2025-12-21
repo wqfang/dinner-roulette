@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>晚饭幸运大转盘</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <div class="container">
-        <h1>小Mona今天晚上吃什么？</h1>
-        
+        <h1>小Mona今天晚上吃点啥？</h1>
         <div class="wheel-wrapper">
             <div class="pointer"></div>
-            <div id="wheel" class="wheel"></div>
+            <canvas id="wheel" class="wheel" width="400" height="400"></canvas>
         </div>
 
         <button id="spin-btn">开始转吧!</button>
-        <h2 id="result-text"></h2>
+        <h2 id="result-text">来看看是啥好吃的😋</h2>
     </div>
 
     <script src="js/main.js"></script>
 </body>
+
 </html>
