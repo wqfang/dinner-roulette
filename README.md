@@ -32,6 +32,10 @@ Use the following commands to build and run the Docker container:
 ```
 docker-compose up --build
 ```
+Sometimes, you need the to run the following command to clear the cache:
+```
+docker-compose down --remove-orphans && docker-compose up --build -d
+```
 
 ## 📝 Next Step
 1. Change the background image of the entire webpage
