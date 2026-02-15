@@ -4,5 +4,22 @@ services:
     ports:
       - "8000:8000"
     restart: always
+    container_name: dinner-roulette
     environment:
       - ENV=production
+    networks:
+      - app-network
+
+# Cloudflare Tunnel Agent
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-tunnel
+    restart: always
+    command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
+    env_file: .env
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    external: true # 👈 关键：告诉 Docker 这个网络是外面创建好的
